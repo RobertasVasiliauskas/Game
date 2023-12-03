@@ -1,6 +1,9 @@
 package Main;
 
 import javax.swing.*;
+import Entities.*;
+
+import java.awt.*;
 
 public class Game implements Runnable {
     private GamePanel gamePanel;
@@ -9,6 +12,7 @@ public class Game implements Runnable {
     private int update = 0;
     private int frames = 0;
 
+    Player player;
 
     private void startGame() {
         Thread gameThread = new Thread(this);
@@ -17,7 +21,9 @@ public class Game implements Runnable {
 
     public Game() {
         SwingUtilities.invokeLater(() -> {
-            gamePanel = new GamePanel();
+            initClasses();
+
+            gamePanel = new GamePanel(this);
             gameWindow = new GameWindow("Its Boshy time", gamePanel);
             gameWindow.setLocationRelativeTo(null);
             gameWindow.setVisible(true);
@@ -26,8 +32,16 @@ public class Game implements Runnable {
         });
     }
 
-    private void update() {
-        gamePanel.updateGame();
+    private void initClasses() {
+        player = new Player(100,100);
+    }
+
+    public void update() {
+        player.update();
+    }
+
+    public void render(Graphics g) {
+        player.render(g);
     }
 
     @Override
@@ -71,5 +85,12 @@ public class Game implements Runnable {
         }
     }
 
+    public void windowFocusLost(){
+        player.resetMovement();
+    }
+
+    public Player getPlayer(){
+        return player;
+    }
 
 }
