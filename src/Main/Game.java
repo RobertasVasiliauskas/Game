@@ -12,6 +12,14 @@ public class Game implements Runnable {
     private int update = 0;
     private int frames = 0;
 
+    public static final int TILES_DEFAULT_SIZE = 32;
+    public static final float SCALE = 1.5f;
+    public static final int TILES_IN_WIDTH = 26;
+    public static final int TILES_IN_HEIGHT = 14;
+    public static final int TILES_SIZE =TILES_DEFAULT_SIZE * (int)SCALE;
+    public static final int GAME_WIDTH = TILES_SIZE * TILES_IN_WIDTH;
+    public static final int GAME_HEIGHT = TILES_SIZE * TILES_IN_HEIGHT;
+
     Player player;
 
     private void startGame() {
