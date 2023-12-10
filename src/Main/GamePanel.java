@@ -3,7 +3,7 @@ package Main;
 import Game.Inputs.KeyBoardInputs;
 import Game.Inputs.MouseInputs;
 import static Main.Game.GAME_HEIGHT;
-import static Main.Game.GAME_WIDTH
+import static Main.Game.GAME_WIDTH;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,10 +24,6 @@ public class GamePanel extends JPanel {
 
     private void setPanelSize() {
         setPreferredSize(new Dimension(GAME_WIDTH, GAME_HEIGHT));
-    }
-
-    public void updateGame() {
-
     }
     @Override
     public void paintComponent(Graphics g) {
